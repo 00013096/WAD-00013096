@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WAD._00013096.Data;
 
-#nullable disable
-
 namespace WAD._00013096.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
@@ -15,20 +13,19 @@ namespace WAD._00013096.DAL.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.17")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WAD._00013096.Models.Person", b =>
+            modelBuilder.Entity("WAD._00013096.Models.Seller", b =>
                 {
-                    b.Property<int>("PersonId")
+                    b.Property<int>("SellerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SellerId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -42,7 +39,7 @@ namespace WAD._00013096.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonId");
+                    b.HasKey("SellerId");
 
                     b.ToTable("Companies");
                 });
@@ -55,7 +52,7 @@ namespace WAD._00013096.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstateId"));
 
-                    b.Property<int>("PersonId")
+                    b.Property<int>("SellerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -75,23 +72,23 @@ namespace WAD._00013096.DAL.Migrations
 
                     b.HasKey("EstateId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("SellerId");
 
                     b.ToTable("Estate");
                 });
 
             modelBuilder.Entity("WAD._00013096.Models.Estate", b =>
                 {
-                    b.HasOne("WAD._00013096.Models.Person", "Person")
+                    b.HasOne("WAD._00013096.Models.Seller", "Seller")
                         .WithMany("Estates")
-                        .HasForeignKey("PersonId")
+                        .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Person");
+                    b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("WAD._00013096.Models.Person", b =>
+            modelBuilder.Entity("WAD._00013096.Models.Seller", b =>
                 {
                     b.Navigation("Estates");
                 });

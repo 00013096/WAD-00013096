@@ -1,8 +1,8 @@
 ﻿namespace WAD._00013096.Models
 {
-    public class Person
+    public class Seller
     {
-        public int PersonId { get; set; }
+        public int SellerId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }

@@ -12,15 +12,15 @@ namespace WAD._00013096.Data
     {
     }
 
-    public DbSet<Person> People { get; set; }
+    public DbSet<Seller> Sellers { get; set; }
     public DbSet<Estate> Estates { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Person>()
+        modelBuilder.Entity<Seller>()
             .HasMany(p => p.Estates)
-            .WithOne(e => e.Person)
-            .HasForeignKey(e => e.PersonId)
+            .WithOne(e => e.Seller)
+            .HasForeignKey(e => e.SellerId)
             .OnDelete(DeleteBehavior.Cascade); 
    
     }

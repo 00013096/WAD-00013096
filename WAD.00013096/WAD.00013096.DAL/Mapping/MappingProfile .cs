@@ -8,10 +8,10 @@ namespace WAD._00013096.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Person, PersonDto>();
+            CreateMap<Seller, SellerDto>();
             CreateMap<Estate, EstateDto>();
 
-            CreateMap<PersonDto, Person>();
+            CreateMap<SellerDto, Seller>();
             CreateMap<EstateDto, Estate>();
         }
     }

@@ -12,10 +12,10 @@ namespace WAD._00013096.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "People",
+                name: "Sellers",
                 columns: table => new
                 {
-                    PersonId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -23,7 +23,7 @@ namespace WAD._00013096.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.PersonId);
+                    table.PrimaryKey("PK_Sellers", x => x.SellerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,23 +36,23 @@ namespace WAD._00013096.DAL.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     PostedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PersonId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Estates", x => x.EstateId);
                     table.ForeignKey(
-                        name: "FK_Estates_People_PersonId",
+                        name: "FK_Estates_Sellers_SellerId",
                         column: x => x.EstateId,
-                        principalTable: "People",
-                        principalColumn: "PersonId",
+                        principalTable: "Sellers",
+                        principalColumn: "SellerId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Estatess_PersonId",
+                name: "IX_Estatess_SellerId",
                 table: "Estates",
-                column: "PersonId");
+                column: "SellerId");
         }
 
         /// <inheritdoc />
@@ -62,7 +62,7 @@ namespace WAD._00013096.DAL.Migrations
                 name: "Estate");
 
             migrationBuilder.DropTable(
-                name: "People");
+                name: "Sellers");
         }
     }
 }

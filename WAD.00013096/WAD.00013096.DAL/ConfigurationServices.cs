@@ -15,7 +15,7 @@ namespace WAD._00013096.DAL
             services.AddDbContext<AppDbContext>(options =>
               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<ISellerRepository, SellerRepository>();
             services.AddScoped<IEstateRepository, EstateRepository>();
 
             return services;
